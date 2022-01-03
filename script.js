@@ -14,18 +14,35 @@ function divide(a,b){
     return a / b;
 }
 
-function pressedElement(){
-    const buttons = document.getElementsByClassName("calculatorOrderChild");
+function operate(a, operator, b){
 
-    buttons[0].addEventListener('click', function(){
+  if(operator == "+"){
+     return add(a, b);
+  }else if(operator == "-"){
+     return subtract(a, b);
+  }else if(operator == "*"){
+     return multiply(a, b);
+  }else if(operator == "/"){
+      return divide(a,b);
+  }
     
-       buttons[0].style.backgroundColor = "blue";
-       return "1";
-    });
 }
 
+let x = operate(4, "/", 4);
+console.log(x);
 
-console.log(pressedElement());
+// function pressedElement(){
+//     const buttons = document.getElementsByClassName("calculatorOrderChild");
+
+//     buttons[0].addEventListener('click', function(){
+    
+//        buttons[0].style.backgroundColor = "blue";
+//        return "1";
+//     });
+// }
+
+
+// console.log(pressedElement());
 
 
 

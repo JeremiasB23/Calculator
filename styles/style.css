@@ -4,14 +4,40 @@
   box-sizing: border-box;
 }
 
+.calPosition {
+  margin: 10% 40%;
+}
+
+.screenDisplay {
+  width: 280px;
+  height: 100px;
+  background-color: #e0d8d8;
+  margin-bottom: 10px;
+  border: 2px solid black;
+}
+
 .calculatorOrder {
   display: flex;
   flex-direction: column;
+  width: 330px;
+  border: 2px solid black;
   padding: 25px;
-  margin-top: 10px;
+  justify-content: center;
+  background-color: cadetblue;
 }
 
 .calculatorOrderChild {
   display: flex;
   flex-direction: row;
+}
+
+button {
+  border: 2px solid black;
+  margin: 5px 5px 5px;
+  padding: 25px;
+  border-radius: 50%;
+}
+
+button:hover {
+  background-color: bisque;
 }/*# sourceMappingURL=style.css.map */
