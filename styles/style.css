@@ -1,0 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.calculatorOrder {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  margin-top: 10px;
+}
+
+.calculatorOrderChild {
+  display: flex;
+  flex-direction: row;
+}/*# sourceMappingURL=style.css.map */
