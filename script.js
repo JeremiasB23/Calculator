@@ -28,21 +28,39 @@ function operate(a, operator, b){
     
 }
 
-let x = operate(4, "/", 4);
-console.log(x);
 
-// function pressedElement(){
-//     const buttons = document.getElementsByClassName("calculatorOrderChild");
 
-//     buttons[0].addEventListener('click', function(){
+function pressedElement(){
     
-//        buttons[0].style.backgroundColor = "blue";
-//        return "1";
-//     });
-// }
+    const buttons = document.getElementsByTagName("button");
+    const screenDisplay = document.querySelector(".screenDisplay");
+    const Txt = document.createTextNode("1");
+    const ShowNumber = document.createElement("LI");
+  
+    buttons[0].addEventListener('click', function(){
+    
+       //buttons[0].style.backgroundColor = "blue";
+       ShowNumber.appendChild(Txt);
+       screenDisplay.appendChild(ShowNumber);     
+    });
 
+    buttons[0].addEventListener('mouseover',function(){//Change it for a keyboard press
+    
+        //buttons[0].style.backgroundColor = "blue";
+        ShowNumber.appendChild(Txt);
+        screenDisplay.appendChild(ShowNumber);     
+     });
 
-// console.log(pressedElement());
+     buttons[1].addEventListener('click', function(){
+    
+        //buttons[0].style.backgroundColor = "blue";
+        ShowNumber.appendChild(Txt);
+        screenDisplay.appendChild(ShowNumber);     
+     });
+}
+
+pressedElement();
+
 
 
 
