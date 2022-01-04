@@ -1,9 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap");
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "digital-7";
+  src: url("./digital-7.ttf") format("truetype");
+}
 .calPosition {
   margin: 10% 40%;
 }
@@ -14,6 +20,17 @@
   background-color: #e0d8d8;
   margin-bottom: 10px;
   border: 2px solid black;
+}
+
+.screenFirstNumbers {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.screenSecondNumbers {
+  display: flex;
+  flex-direction: row;
 }
 
 .calculatorOrder {
@@ -40,4 +57,9 @@ button {
 
 button:hover {
   background-color: bisque;
+}
+
+h1 {
+  font-family: "digital-7";
+  font-size: 50px;
 }/*# sourceMappingURL=style.css.map */

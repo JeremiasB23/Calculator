@@ -4,16 +4,33 @@
   box-sizing: border-box;
 }
 
-.calPosition{
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap"); //"Orbitron", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@300&display=swap"); //"Rajdhani", sans-serif;"
+@font-face {
+  font-family: "digital-7";
+  src: url("./digital-7.ttf") format("truetype");
+}
+.calPosition {
   margin: 10% 40%;
 }
 
-.screenDisplay{
+.screenDisplay {
   width: 280px;
   height: 100px;
   background-color: rgb(224, 216, 216);
   margin-bottom: 10px;
   border: 2px solid black;
+}
+
+.screenFirstNumbers {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.screenSecondNumbers {
+  display: flex;
+  flex-direction: row;
 }
 
 .calculatorOrder {
@@ -31,13 +48,18 @@
   flex-direction: row;
 }
 
-button{
+button {
   border: 2px solid black;
   margin: 5px 5px 5px;
   padding: 25px;
   border-radius: 50%;
 }
 
-button:hover{
+button:hover {
   background-color: bisque;
+}
+
+h1 {
+  font-family: "digital-7";
+  font-size: 50px;
 }
