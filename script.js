@@ -94,6 +94,11 @@ function detectOperator(value){//*Detecta si el elemento que recive es un numero
 
     if(value == "="){
         console.log(operate(+value1, operatorValue, +value2));//!The (+)unary plus operator to convert them to numbers first.
+        const screenDisplaySecond = document.querySelector(".screenSecondNumbers");
+        const Txt = document.createTextNode(operate(+value1, operatorValue, +value2));
+        const ShowNumber = document.createElement("h1");
+        ShowNumber.appendChild(Txt);
+        screenDisplaySecond.appendChild(ShowNumber);     
     }
 
     //*If "=" is pressed function susbract(storeValueFirstLine()-storeValueSecondLine());
@@ -125,7 +130,7 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
             screenDisplay.appendChild(ShowNumber);     
             detectOperator(1);
         }else{
-            screenDisplaySecond.appendChild(ShowNumber);
+            screenDisplay.appendChild(ShowNumber);
             detectOperator(1);
         }
        
@@ -142,7 +147,7 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
             screenDisplay.appendChild(ShowNumber);     
             detectOperator(2);
         }else{
-            screenDisplaySecond.appendChild(ShowNumber);
+            screenDisplay.appendChild(ShowNumber);
             detectOperator(2);
         }
 
@@ -160,7 +165,7 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
             screenDisplay.appendChild(ShowNumber);     
             detectOperator(3);
         }else{
-            screenDisplaySecond.appendChild(ShowNumber);
+            screenDisplay.appendChild(ShowNumber);
             detectOperator(3);
         }
 
@@ -192,7 +197,7 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
             screenDisplay.appendChild(ShowNumber);     
             detectOperator(4);
         }else{
-            screenDisplaySecond.appendChild(ShowNumber);
+            screenDisplay.appendChild(ShowNumber);
             detectOperator(4);
         }
 
@@ -210,7 +215,7 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
             screenDisplay.appendChild(ShowNumber);     
             detectOperator(5);
         }else{
-            screenDisplaySecond.appendChild(ShowNumber);
+            screenDisplay.appendChild(ShowNumber);
             detectOperator(5);
         }
 
@@ -228,7 +233,7 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
             screenDisplay.appendChild(ShowNumber);     
             detectOperator(6);
         }else{
-            screenDisplaySecond.appendChild(ShowNumber);
+            screenDisplay.appendChild(ShowNumber);
             detectOperator(6);
         }
 
@@ -258,7 +263,7 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
         screenDisplay.appendChild(ShowNumber);     
         detectOperator(7);
     }else{
-        screenDisplaySecond.appendChild(ShowNumber);
+        screenDisplay.appendChild(ShowNumber);
         detectOperator(7);
     }
    
@@ -275,7 +280,7 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
         screenDisplay.appendChild(ShowNumber);     
         detectOperator(8);
     }else{
-        screenDisplaySecond.appendChild(ShowNumber);
+        screenDisplay.appendChild(ShowNumber);
         detectOperator(8);
     }
    
@@ -292,7 +297,7 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
         screenDisplay.appendChild(ShowNumber);     
         detectOperator(9);
     }else{
-        screenDisplaySecond.appendChild(ShowNumber);
+        screenDisplay.appendChild(ShowNumber);
         detectOperator(9);
     }
 
@@ -322,7 +327,7 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
         screenDisplay.appendChild(ShowNumber);     
         detectOperator(0);
     }else{
-        screenDisplaySecond.appendChild(ShowNumber);
+        screenDisplay.appendChild(ShowNumber);
         detectOperator(0);
     }
    
@@ -349,7 +354,7 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
         }
     });   
 
-    buttons[17].addEventListener('click', function(){//![+]
+    buttons[17].addEventListener('click', function(){//![DEL]
     
             arr.pop();//TODO VER COMO HACER PARA QUE CUANDO LE MANDE EL POP AL ELEMENTO DEL ARRAY SE BORRE DE PANTALLA
     });   
