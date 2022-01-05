@@ -32,6 +32,9 @@ let value1 = "";
 let value2 = "";
 let arr = [];
 let arr2 = [];
+let operatorValue = "";
+let secondNum = false;
+let result = 0;
 
 function storeValueFirstLine(value){//*Toma el primer valor 
 
@@ -57,7 +60,21 @@ function storeValueSecondLine(value){//*Toma el segundo valor
   return str;
 }
 
-let secondNum = false;
+function calculate(){
+
+    console.log("v1:" + value1);
+    console.log("v2:" +value2);
+    result = operate(+value1, operatorValue, +value2);//*FIXEAR: CUANDO PASO EL NUEVO OPERATOR ME HACE ESE CALCULO Y NO EL QUE TENDRIA EJ: EN 2+2*3 me multiplica 2y2
+    value1 = result;
+    value2 = "";//!Reseteo el valor de la segunda variable
+    arr2 = [];//!Reseteo el valor de la segunda variable
+    console.log("This is result: "+result);
+    console.log("v1:" + value1);
+    console.log("v2:" +value2);
+    return result;
+}
+
+let i = 0;
 
 function actualOperatorDetector(operator){
     if(operator == "+"){
@@ -72,37 +89,32 @@ function actualOperatorDetector(operator){
 }
 
 
-let operatorValue = "";
-
-
 function detectOperator(value){//*Detecta si el elemento que recive es un numero o un operador, cuand recive el operador
                                //*comienza a guardar los nuevos elementos en una nueva linea
 
     
-    if(actualOperatorDetector(value)){//!Si el elemento introducido no es un operador agregamos numeros a la primera linea
-                     //!Si el elemento introducido es un operador secondNum = true y todos los elementos nuevos se suman a la
-                    //!segunda linea y tambien se displayean en la segunda linea de la pantalla
+    if(actualOperatorDetector(value)){
+
         secondNum = true;
         operatorValue = actualOperatorDetector(value);
-                    
+        i++;
+
     }else if(value != "=" && secondNum == false){
         storeValueFirstLine(value);
-    }
-
-    if(secondNum == true && value != "=" && value != actualOperatorDetector(value)){
+    }else if(secondNum == true && value != "=" && value != actualOperatorDetector(value)){
         storeValueSecondLine(value);
     }
 
+    
     if(value == "="){
-        console.log(operate(+value1, operatorValue, +value2));//!The (+)unary plus operator to convert them to numbers first.
+        calculate();
         const screenDisplaySecond = document.querySelector(".screenSecondNumbers");
-        const Txt = document.createTextNode(operate(+value1, operatorValue, +value2));
+        const Txt = document.createTextNode(result);
         const ShowNumber = document.createElement("h1");
         ShowNumber.appendChild(Txt);
         screenDisplaySecond.appendChild(ShowNumber);     
     }
 
-    //*If "=" is pressed function susbract(storeValueFirstLine()-storeValueSecondLine());
 }
 
 function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO LA SUMA PEGA UNA STRING A LA OTRA, FIXEAR!
@@ -112,9 +124,6 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
 
     //!FIRST LINE ELEMENTS
     const screenDisplay = document.querySelector(".screenFirstNumbers");
-  
-    //!SECOND LINE ELEMENTS
-    const screenDisplaySecond = document.querySelector(".screenSecondNumbers");
 
     //TODO MEJORAR CODIGO: TODOS ESTOS ELEMENOS HACERLOS UNA FUNCTION QUE SEGUN EL NUMERO QUE APRETE DETECTE EL NUMERO DE BOTON 
     //TODO QUE ES Y LOS ELEMENTOS EJ: button[0], createTextNode("1"); detectOperator(1); USEN EL NUMERO DEL BOTON PRESIONADO
@@ -141,38 +150,34 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
     
 
     function execute(value){
+
         const Txt = document.createTextNode(value);
         const ShowNumber = document.createElement("h1");
         ShowNumber.appendChild(Txt);
-
-      if(secondNum != true){
-        
         screenDisplay.appendChild(ShowNumber);     
         detectOperator(value);
-      }else{
-        screenDisplay.appendChild(ShowNumber);
-        detectOperator(value);
-      }
+      
     }
 
     function executeOperators(value){
-        if(secondNum != true){//*SI YA APRETE EL * UNA VEZ YA NO PUEDO APRETARLO MÁS
-  
-            const Txt = document.createTextNode(value);
-            const ShowNumber = document.createElement("h1");
-            ShowNumber.appendChild(Txt);
-            screenDisplay.appendChild(ShowNumber);     
-            secondNum = true;
-            detectOperator(value);
+        
+        const Txt = document.createTextNode(value);
+        const ShowNumber = document.createElement("h1");
+        ShowNumber.appendChild(Txt);
+        screenDisplay.appendChild(ShowNumber);     
+        
+        detectOperator(value);
+        if(i>=2){
+            calculate();
         }
+        
     }
-
-
      
     buttons[14].addEventListener('click', function(){
         
     if(secondNum == true){//*SI YA APRETE EL * UNA VEZ YA NO PUEDO APRETARLO MÁS
         detectOperator("=");
+        calculate();
         }
 
     });      
