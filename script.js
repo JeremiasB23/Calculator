@@ -57,7 +57,7 @@ function storeValueSecondLine(value){//*Toma el segundo valor
   return str;
 }
 
-  let secondNum = false;
+let secondNum = false;
 
 function actualOperatorDetector(operator){
     if(operator == "+"){
@@ -74,6 +74,7 @@ function actualOperatorDetector(operator){
 
 let operatorValue = "";
 
+
 function detectOperator(value){//*Detecta si el elemento que recive es un numero o un operador, cuand recive el operador
                                //*comienza a guardar los nuevos elementos en una nueva linea
 
@@ -88,7 +89,7 @@ function detectOperator(value){//*Detecta si el elemento que recive es un numero
         storeValueFirstLine(value);
     }
 
-    if(secondNum == true && value != "=" && value != "*"){
+    if(secondNum == true && value != "=" && value != actualOperatorDetector(value)){
         storeValueSecondLine(value);
     }
 
@@ -119,219 +120,54 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
     //TODO QUE ES Y LOS ELEMENTOS EJ: button[0], createTextNode("1"); detectOperator(1); USEN EL NUMERO DEL BOTON PRESIONADO
     //TODO Y NO TENER UNA DETECCION DE BOTON POR CADA ELEMENTO
 
-    buttons[0].addEventListener('click', function(){//![1]
-    
-            const Txt = document.createTextNode("1");
-            const ShowNumber = document.createElement("h1");
-            ShowNumber.appendChild(Txt);
+   function buttonsDetections(){
+        buttons[0].addEventListener('click', function(){execute(1)});
+        buttons[1].addEventListener('click', function(){execute(2)});
+        buttons[2].addEventListener('click', function(){execute(3)});
+        buttons[3].addEventListener('click', function(){executeOperators("/")});
+        buttons[4].addEventListener('click', function(){execute(4)});
+        buttons[5].addEventListener('click', function(){execute(5)});
+        buttons[6].addEventListener('click', function(){execute(6)});
+        buttons[7].addEventListener('click', function(){executeOperators("*")});
+        buttons[8].addEventListener('click', function(){execute(7)});
+        buttons[9].addEventListener('click', function(){execute(8)});
+        buttons[10].addEventListener('click', function(){execute(9)});
+        buttons[11].addEventListener('click', function(){executeOperators("-")});
+        buttons[13].addEventListener('click', function(){execute(0)});
+        buttons[15].addEventListener('click', function(){executeOperators("+")});
+   }
 
-        if(secondNum != true){//*SI TODAVIA NO APRETE * SUMA A LOS NUMEROS DE ARRIBA, SI LO APRETE SUMA(PRINTEA) LOS NUMEROs ABAJO.
-            
-            screenDisplay.appendChild(ShowNumber);     
-            detectOperator(1);
-        }else{
-            screenDisplay.appendChild(ShowNumber);
-            detectOperator(1);
-        }
-       
-    });
-
-     buttons[1].addEventListener('click', function(){//![2]
+   buttonsDetections();
     
-        const Txt = document.createTextNode("2");
+
+    function execute(value){
+        const Txt = document.createTextNode(value);
         const ShowNumber = document.createElement("h1");
         ShowNumber.appendChild(Txt);
 
-        if(secondNum != true){//*SI TODAVIA NO APRETE * SUMA A LOS NUMEROS DE ARRIBA, SI LO APRETE SUMA(PRINTEA) LOS NUMEROs ABAJO.
-            
-            screenDisplay.appendChild(ShowNumber);     
-            detectOperator(2);
-        }else{
-            screenDisplay.appendChild(ShowNumber);
-            detectOperator(2);
-        }
-
-     });
-
-     buttons[2].addEventListener('click', function(){//![3]
-    
+      if(secondNum != true){
         
-        const Txt = document.createTextNode("3");
-        const ShowNumber = document.createElement("h1");
-        ShowNumber.appendChild(Txt);
+        screenDisplay.appendChild(ShowNumber);     
+        detectOperator(value);
+      }else{
+        screenDisplay.appendChild(ShowNumber);
+        detectOperator(value);
+      }
+    }
 
-        if(secondNum != true){//*SI TODAVIA NO APRETE * SUMA A LOS NUMEROS DE ARRIBA, SI LO APRETE SUMA(PRINTEA) LOS NUMEROs ABAJO.
-            
-            screenDisplay.appendChild(ShowNumber);     
-            detectOperator(3);
-        }else{
-            screenDisplay.appendChild(ShowNumber);
-            detectOperator(3);
-        }
-
-     });
-
-
-     buttons[3].addEventListener('click', function(){//![/]
-         
+    function executeOperators(value){
         if(secondNum != true){//*SI YA APRETE EL * UNA VEZ YA NO PUEDO APRETARLO MÁS
   
-          const Txt = document.createTextNode("/");
-          const ShowNumber = document.createElement("h1");
-          ShowNumber.appendChild(Txt);
-          screenDisplay.appendChild(ShowNumber);     
-          secondNum = true;
-          detectOperator("/");
-          }
-       });  
-
-    buttons[4].addEventListener('click', function(){//![4]
-    
-        
-        const Txt = document.createTextNode("4");
-        const ShowNumber = document.createElement("h1");
-        ShowNumber.appendChild(Txt);
-
-        if(secondNum != true){//*SI TODAVIA NO APRETE * SUMA A LOS NUMEROS DE ARRIBA, SI LO APRETE SUMA(PRINTEA) LOS NUMEROs ABAJO.
-            
+            const Txt = document.createTextNode(value);
+            const ShowNumber = document.createElement("h1");
+            ShowNumber.appendChild(Txt);
             screenDisplay.appendChild(ShowNumber);     
-            detectOperator(4);
-        }else{
-            screenDisplay.appendChild(ShowNumber);
-            detectOperator(4);
+            secondNum = true;
+            detectOperator(value);
         }
-
-     }); 
-
-     buttons[5].addEventListener('click', function(){//![5]
-    
-        
-        const Txt = document.createTextNode("5");
-        const ShowNumber = document.createElement("h1");
-        ShowNumber.appendChild(Txt);
-
-        if(secondNum != true){//*SI TODAVIA NO APRETE * SUMA A LOS NUMEROS DE ARRIBA, SI LO APRETE SUMA(PRINTEA) LOS NUMEROs ABAJO.
-            
-            screenDisplay.appendChild(ShowNumber);     
-            detectOperator(5);
-        }else{
-            screenDisplay.appendChild(ShowNumber);
-            detectOperator(5);
-        }
-
-     }); 
-
-     buttons[6].addEventListener('click', function(){//![6]
-    
-        
-        const Txt = document.createTextNode("6");
-        const ShowNumber = document.createElement("h1");
-        ShowNumber.appendChild(Txt);
-
-        if(secondNum != true){//*SI TODAVIA NO APRETE * SUMA A LOS NUMEROS DE ARRIBA, SI LO APRETE SUMA(PRINTEA) LOS NUMEROs ABAJO.
-            
-            screenDisplay.appendChild(ShowNumber);     
-            detectOperator(6);
-        }else{
-            screenDisplay.appendChild(ShowNumber);
-            detectOperator(6);
-        }
-
-     }); 
-
-     buttons[7].addEventListener('click', function(){//![*]
-         
-      if(secondNum != true){//*SI YA APRETE EL * UNA VEZ YA NO PUEDO APRETARLO MÁS
-
-        const Txt = document.createTextNode("*");
-        const ShowNumber = document.createElement("h1");
-        ShowNumber.appendChild(Txt);
-        screenDisplay.appendChild(ShowNumber);     
-        secondNum = true;
-        detectOperator("*");
-        }
-     });     
-
-     buttons[8].addEventListener('click', function(){//![7]
-    
-        const Txt = document.createTextNode("7");
-        const ShowNumber = document.createElement("h1");
-        ShowNumber.appendChild(Txt);
-
-    if(secondNum != true){//*SI TODAVIA NO APRETE * SUMA A LOS NUMEROS DE ARRIBA, SI LO APRETE SUMA(PRINTEA) LOS NUMEROs ABAJO.
-        
-        screenDisplay.appendChild(ShowNumber);     
-        detectOperator(7);
-    }else{
-        screenDisplay.appendChild(ShowNumber);
-        detectOperator(7);
-    }
-   
-    });
-
-    buttons[9].addEventListener('click', function(){//![8]
-    
-        const Txt = document.createTextNode("8");
-        const ShowNumber = document.createElement("h1");
-        ShowNumber.appendChild(Txt);
-
-    if(secondNum != true){//*SI TODAVIA NO APRETE * SUMA A LOS NUMEROS DE ARRIBA, SI LO APRETE SUMA(PRINTEA) LOS NUMEROs ABAJO.
-        
-        screenDisplay.appendChild(ShowNumber);     
-        detectOperator(8);
-    }else{
-        screenDisplay.appendChild(ShowNumber);
-        detectOperator(8);
-    }
-   
-   });
-
-   buttons[10].addEventListener('click', function(){//![9]
-    
-    const Txt = document.createTextNode("9");
-    const ShowNumber = document.createElement("h1");
-    ShowNumber.appendChild(Txt);
-
-    if(secondNum != true){//*SI TODAVIA NO APRETE * SUMA A LOS NUMEROS DE ARRIBA, SI LO APRETE SUMA(PRINTEA) LOS NUMEROs ABAJO.
-        
-        screenDisplay.appendChild(ShowNumber);     
-        detectOperator(9);
-    }else{
-        screenDisplay.appendChild(ShowNumber);
-        detectOperator(9);
     }
 
-    });
 
-    buttons[11].addEventListener('click', function(){//![-]
-        
-    if(secondNum != true){//*SI YA APRETE EL * UNA VEZ YA NO PUEDO APRETARLO MÁS
-
-        const Txt = document.createTextNode("-");
-        const ShowNumber = document.createElement("h1");
-        ShowNumber.appendChild(Txt);
-        screenDisplay.appendChild(ShowNumber);     
-        secondNum = true;
-        detectOperator("-");
-        }
-    });   
-
-    buttons[13].addEventListener('click', function(){//![0]
-
-    const Txt = document.createTextNode("0");
-    const ShowNumber = document.createElement("h1");
-    ShowNumber.appendChild(Txt);
-
-    if(secondNum != true){//*SI TODAVIA NO APRETE * SUMA A LOS NUMEROS DE ARRIBA, SI LO APRETE SUMA(PRINTEA) LOS NUMEROs ABAJO.
-        
-        screenDisplay.appendChild(ShowNumber);     
-        detectOperator(0);
-    }else{
-        screenDisplay.appendChild(ShowNumber);
-        detectOperator(0);
-    }
-   
-    });
      
     buttons[14].addEventListener('click', function(){
         
@@ -339,20 +175,7 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
         detectOperator("=");
         }
 
-    });     
-      
-    buttons[15].addEventListener('click', function(){//![+]
-        
-    if(secondNum != true){//*SI YA APRETE EL * UNA VEZ YA NO PUEDO APRETARLO MÁS
-
-        const Txt = document.createTextNode("+");
-        const ShowNumber = document.createElement("h1");
-        ShowNumber.appendChild(Txt);
-        screenDisplay.appendChild(ShowNumber);     
-        secondNum = true;
-        detectOperator("+");
-        }
-    });   
+    });      
 
     buttons[17].addEventListener('click', function(){//![DEL]
     
