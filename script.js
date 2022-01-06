@@ -130,24 +130,84 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
     //TODO Y NO TENER UNA DETECCION DE BOTON POR CADA ELEMENTO
 
    function buttonsDetections(){
-        buttons[0].addEventListener('click', function(){execute(1)});
-        buttons[1].addEventListener('click', function(){execute(2)});
-        buttons[2].addEventListener('click', function(){execute(3)});
-        buttons[3].addEventListener('click', function(){executeOperators("/")});
-        buttons[4].addEventListener('click', function(){execute(4)});
-        buttons[5].addEventListener('click', function(){execute(5)});
-        buttons[6].addEventListener('click', function(){execute(6)});
-        buttons[7].addEventListener('click', function(){executeOperators("*")});
-        buttons[8].addEventListener('click', function(){execute(7)});
-        buttons[9].addEventListener('click', function(){execute(8)});
-        buttons[10].addEventListener('click', function(){execute(9)});
-        buttons[11].addEventListener('click', function(){executeOperators("-")});
-        buttons[13].addEventListener('click', function(){execute(0)});
-        buttons[15].addEventListener('click', function(){executeOperators("+")});
+        buttons[0].addEventListener('click', function(){execute(1);});
+        buttons[1].addEventListener('click', function(){execute(2);});
+        buttons[2].addEventListener('click', function(){execute(3);});
+        buttons[3].addEventListener('click', function(){executeOperators("/");});
+        buttons[4].addEventListener('click', function(){execute(4);});
+        buttons[5].addEventListener('click', function(){execute(5);});
+        buttons[6].addEventListener('click', function(){execute(6);});
+        buttons[7].addEventListener('click', function(){executeOperators("*");});
+        buttons[8].addEventListener('click', function(){execute(7);});
+        buttons[9].addEventListener('click', function(){execute(8);});
+        buttons[10].addEventListener('click', function(){execute(9);});
+        buttons[11].addEventListener('click', function(){executeOperators("-");});
+        buttons[13].addEventListener('click', function(){execute(0);});
+        buttons[15].addEventListener('click', function(){executeOperators("+");});
    }
 
+   function keyboardDetections(){
+    document.addEventListener('keydown', function(event){
+
+     switch (event.key) {
+        case "1":
+            execute(1);
+        break;
+        case "2":
+            execute(2);
+        break;
+        case "3":
+            execute(3);
+        break;
+        case "/":
+            executeOperators("/");
+        break;
+        case "4":
+            execute(4);
+        break;
+        case "5":
+            execute(5);
+        break;
+        case "6":
+            execute(6);
+        break;
+        case "*":
+            executeOperators("*");
+        break;
+        case "7":
+            execute(7);
+            break;
+        case "8":
+            execute(8);
+            break;
+        case "9":
+            execute(9);
+            break;
+        case "-":
+            executeOperators("-");
+        break;
+        case ".":
+            execute(".");
+            break;
+        case "0":
+            execute(0);
+            break;
+        case "Enter":
+            detectOperator("=");//!Funciona pero cambiar esto
+            calculate();
+            break;
+        case "+":
+            executeOperators("+");
+        break;
+         default:
+           return; // Quit when this doesn't handle the key event.
+       }
+
+    });
+}
+
    buttonsDetections();
-    
+   keyboardDetections();  
 
     function execute(value){
 
