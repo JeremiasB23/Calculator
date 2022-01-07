@@ -36,6 +36,8 @@ let operatorValue = "";
 let secondNum = false;
 let result = 0;
 let arrOperators = [];
+let j = 0;
+let i = 0;
 
 function storeValueFirstLine(value){//*Toma el primer valor 
 
@@ -65,7 +67,7 @@ function storeOperator(value){
    arrOperators.push(value);//!Guarda cada array en una posicion
 }
 
-let j = 0;
+
 
 function calculate(){
 
@@ -82,7 +84,31 @@ function calculate(){
     return result;
 }
 
-let i = 0;
+function clear(){
+    value1 = "";
+    value2 = "";
+    arr = [];
+    arr2 = [];
+    operatorValue = "";
+    secondNum = false;
+    result = 0;
+    arrOperators = [];
+    j = 0;
+    i = 0;
+    
+    const screenDisplay = document.querySelector(".screenFirstNumbers");
+    const Txt = document.createTextNode("");
+    const ShowNumber = document.createElement("h1");
+    ShowNumber.appendChild(Txt);
+    screenDisplay.appendChild(ShowNumber);  
+    screenDisplay.style.visibility = 'hidden';//!VER SI PUEDO HACER ALGO CON ESTO
+    //!https://www.w3schools.com/jsref/prop_style_display.asp
+    //!https://www.w3schools.com/jsref/prop_style_visibility.asp
+    //!https://stackoverflow.com/questions/824000/javascript-textnode-update
+    
+}
+
+
 
 function actualOperatorDetector(operator){
     if(operator == "+"){
@@ -100,7 +126,6 @@ function actualOperatorDetector(operator){
 function detectOperator(value){//*Detecta si el elemento que recive es un numero o un operador, cuand recive el operador
                                //*comienza a guardar los nuevos elementos en una nueva linea
 
-    
     if(actualOperatorDetector(value)){
 
         secondNum = true;
@@ -126,7 +151,7 @@ function detectOperator(value){//*Detecta si el elemento que recive es un numero
 
 }
 
-function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO LA SUMA PEGA UNA STRING A LA OTRA, FIXEAR!
+function pressedElement(){
 
     //!ELEMENTOS COMPARTIDOS
     const buttons = document.getElementsByTagName("button");
@@ -134,25 +159,21 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
     //!FIRST LINE ELEMENTS
     const screenDisplay = document.querySelector(".screenFirstNumbers");
 
-    //TODO MEJORAR CODIGO: TODOS ESTOS ELEMENOS HACERLOS UNA FUNCTION QUE SEGUN EL NUMERO QUE APRETE DETECTE EL NUMERO DE BOTON 
-    //TODO QUE ES Y LOS ELEMENTOS EJ: button[0], createTextNode("1"); detectOperator(1); USEN EL NUMERO DEL BOTON PRESIONADO
-    //TODO Y NO TENER UNA DETECCION DE BOTON POR CADA ELEMENTO
-
    function buttonsDetections(){
-        buttons[0].addEventListener('click', function(){execute(1)});
-        buttons[1].addEventListener('click', function(){execute(2)});
-        buttons[2].addEventListener('click', function(){execute(3)});
-        buttons[3].addEventListener('click', function(){executeOperators("/")});
-        buttons[4].addEventListener('click', function(){execute(4)});
-        buttons[5].addEventListener('click', function(){execute(5)});
-        buttons[6].addEventListener('click', function(){execute(6)});
-        buttons[7].addEventListener('click', function(){executeOperators("*")});
-        buttons[8].addEventListener('click', function(){execute(7)});
-        buttons[9].addEventListener('click', function(){execute(8)});
-        buttons[10].addEventListener('click', function(){execute(9)});
-        buttons[11].addEventListener('click', function(){executeOperators("-")});
-        buttons[13].addEventListener('click', function(){execute(0)});
-        buttons[15].addEventListener('click', function(){executeOperators("+")});
+        buttons[0].addEventListener('click', function(){execute(1);});
+        buttons[1].addEventListener('click', function(){execute(2);});
+        buttons[2].addEventListener('click', function(){execute(3);});
+        buttons[3].addEventListener('click', function(){executeOperators("/");});
+        buttons[4].addEventListener('click', function(){execute(4);});
+        buttons[5].addEventListener('click', function(){execute(5);});
+        buttons[6].addEventListener('click', function(){execute(6);});
+        buttons[7].addEventListener('click', function(){executeOperators("*");});
+        buttons[8].addEventListener('click', function(){execute(7);});
+        buttons[9].addEventListener('click', function(){execute(8);});
+        buttons[10].addEventListener('click', function(){execute(9);});
+        buttons[11].addEventListener('click', function(){executeOperators("-");});
+        buttons[13].addEventListener('click', function(){execute(0);});
+        buttons[15].addEventListener('click', function(){executeOperators("+");});
    }
 
    function keyboardDetections(){
@@ -226,6 +247,7 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
         ShowNumber.appendChild(Txt);
         screenDisplay.appendChild(ShowNumber);     
         detectOperator(value);
+        screenDisplay.style.visibility = 'initial';
       
     }
 
@@ -252,11 +274,15 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
 
     });      
 
+    buttons[16].addEventListener('click', function(){//![CLEAR]
+        clear();
+    });   
     buttons[17].addEventListener('click', function(){//![DEL]
     
             arr.pop();//TODO VER COMO HACER PARA QUE CUANDO LE MANDE EL POP AL ELEMENTO DEL ARRAY SE BORRE DE PANTALLA
     });   
 }
+
 
 pressedElement();
 
