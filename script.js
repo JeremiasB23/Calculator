@@ -35,6 +35,7 @@ let arr2 = [];
 let operatorValue = "";
 let secondNum = false;
 let result = 0;
+let arrOperators = [];
 
 function storeValueFirstLine(value){//*Toma el primer valor 
 
@@ -60,17 +61,24 @@ function storeValueSecondLine(value){//*Toma el segundo valor
   return str;
 }
 
+function storeOperator(value){
+   arrOperators.push(value);//!Guarda cada array en una posicion
+}
+
+let j = 0;
+
 function calculate(){
 
-    console.log("v1:" + value1);
-    console.log("v2:" +value2);
-    result = operate(+value1, operatorValue, +value2);//*FIXEAR: CUANDO PASO EL NUEVO OPERATOR ME HACE ESE CALCULO Y NO EL QUE TENDRIA EJ: EN 2+2*3 me multiplica 2y2
+    //console.log("v1:" + value1);
+    //console.log("v2:" +value2);
+    result = operate(+value1, arrOperators[j], +value2);//*FIXEAR: CUANDO PASO EL NUEVO OPERATOR ME HACE ESE CALCULO Y NO EL QUE TENDRIA EJ: EN 2+2*3 me multiplica 2y2
     value1 = result;
     value2 = "";//!Reseteo el valor de la segunda variable
     arr2 = [];//!Reseteo el valor de la segunda variable
-    console.log("This is result: "+result);
-    console.log("v1:" + value1);
-    console.log("v2:" +value2);
+    //console.log("This is result: "+result);
+    //console.log("v1:" + value1);
+    //console.log("v2:" +value2);
+    j++;//!Cuando ya se uso el operador en el calculo, salto al elemento que sigue
     return result;
 }
 
@@ -96,6 +104,7 @@ function detectOperator(value){//*Detecta si el elemento que recive es un numero
     if(actualOperatorDetector(value)){
 
         secondNum = true;
+        storeOperator(value);
         operatorValue = actualOperatorDetector(value);
         i++;
 
@@ -130,20 +139,20 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
     //TODO Y NO TENER UNA DETECCION DE BOTON POR CADA ELEMENTO
 
    function buttonsDetections(){
-        buttons[0].addEventListener('click', function(){execute(1);});
-        buttons[1].addEventListener('click', function(){execute(2);});
-        buttons[2].addEventListener('click', function(){execute(3);});
-        buttons[3].addEventListener('click', function(){executeOperators("/");});
-        buttons[4].addEventListener('click', function(){execute(4);});
-        buttons[5].addEventListener('click', function(){execute(5);});
-        buttons[6].addEventListener('click', function(){execute(6);});
-        buttons[7].addEventListener('click', function(){executeOperators("*");});
-        buttons[8].addEventListener('click', function(){execute(7);});
-        buttons[9].addEventListener('click', function(){execute(8);});
-        buttons[10].addEventListener('click', function(){execute(9);});
-        buttons[11].addEventListener('click', function(){executeOperators("-");});
-        buttons[13].addEventListener('click', function(){execute(0);});
-        buttons[15].addEventListener('click', function(){executeOperators("+");});
+        buttons[0].addEventListener('click', function(){execute(1)});
+        buttons[1].addEventListener('click', function(){execute(2)});
+        buttons[2].addEventListener('click', function(){execute(3)});
+        buttons[3].addEventListener('click', function(){executeOperators("/")});
+        buttons[4].addEventListener('click', function(){execute(4)});
+        buttons[5].addEventListener('click', function(){execute(5)});
+        buttons[6].addEventListener('click', function(){execute(6)});
+        buttons[7].addEventListener('click', function(){executeOperators("*")});
+        buttons[8].addEventListener('click', function(){execute(7)});
+        buttons[9].addEventListener('click', function(){execute(8)});
+        buttons[10].addEventListener('click', function(){execute(9)});
+        buttons[11].addEventListener('click', function(){executeOperators("-")});
+        buttons[13].addEventListener('click', function(){execute(0)});
+        buttons[15].addEventListener('click', function(){executeOperators("+")});
    }
 
    function keyboardDetections(){
@@ -207,7 +216,8 @@ function pressedElement(){//TODO FIXEAR-> LAS DEMAS OPERACIONES FUNCIONAN PERO L
 }
 
    buttonsDetections();
-   keyboardDetections();  
+   keyboardDetections(); 
+    
 
     function execute(value){
 
